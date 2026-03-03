@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 - 2026年3月3日</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231A7F37'/><circle cx='16' cy='14' r='6' fill='none' stroke='white' stroke-width='2'/><path d='M12 12h8M16 10v4M10 22c0-3.3 2.7-6 6-6s6 2.7 6 6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round'/></svg>">
+    <style>
+        :root {
+            --color-success: #1A7F37; --color-success-light: #2DA44E;
+            --color-danger: #CF222E; --color-danger-light: #FF7B72;
+            --color-warning: #BF8700;
+            --color-info: #0969DA; --color-info-light: #54AEFF;
+            --color-purple: #7C3AED;
+            --color-text-primary: #1F2328; --color-text-secondary: #4D5561; --color-text-muted: #656D76;
+            --color-border: #D0D7DE; --color-border-light: #E8ECF0;
+            --color-bg: #F6F8FA; --color-bg-card: #FFFFFF; --color-bg-table-header: #F3F5F7;
+            --gradient-success: linear-gradient(135deg, #1A7F37 0%, #2DA44E 100%);
+            --shadow-card: 0 2px 8px rgba(31,35,40,.06), 0 1px 2px rgba(31,35,40,.04);
+            --shadow-hover: 0 6px 16px rgba(26,127,55,.15), 0 2px 6px rgba(26,127,55,.1);
+            --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px; --radius-full: 999px;
+            --font-family: -apple-system,"system-ui","Segoe UI","Noto Sans SC",Helvetica,Arial,sans-serif;
+            --transition-normal: 200ms cubic-bezier(.4,0,.2,1);
+            --content-max-width: 980px;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:var(--font-family); background:var(--color-bg); color:var(--color-text-primary); font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+        .container { max-width:var(--content-max-width); margin:0 auto; padding:24px 20px; }
+
+        /* Header */
+        .header { background:var(--gradient-success); color:#fff; border-radius:var(--radius-lg); padding:28px 32px; margin-bottom:20px; }
+        .header-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,.2); padding:4px 12px; border-radius:var(--radius-full); font-size:12px; font-weight:600; letter-spacing:.5px; margin-bottom:12px; }
+        .header-title { font-size:26px; font-weight:800; letter-spacing:-.5px; margin-bottom:6px; }
+        .header-date { font-size:14px; opacity:.85; }
+
+        /* Overview */
+        .overview { background:var(--color-bg-card); border:1px solid var(--color-border-light); border-radius:var(--radius-lg); padding:24px; margin-bottom:20px; box-shadow:var(--shadow-card); }
+        .overview-title { font-size:18px; font-weight:800; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+        .overview-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+        .overview-item { padding:14px 16px; border-radius:var(--radius-md); border:1px solid var(--color-border-light); background:var(--color-bg); }
+        .overview-item-header { display:flex; align-items:center; gap:6px; margin-bottom:8px; }
+        .overview-item-icon { font-size:16px; }
+        .overview-item-label { font-size:13px; font-weight:700; color:var(--color-success-light); letter-spacing:.3px; }
+        .overview-item-text { font-size:14px; color:var(--color-text-secondary); line-height:1.7; }
+        .overview-item-text strong { color:var(--color-text-primary); }
+
+        /* Tabs */
+        .tab-nav { display:flex; gap:4px; margin-bottom:20px; background:var(--color-bg-card); border:1px solid var(--color-border-light); border-radius:var(--radius-md); padding:4px; box-shadow:var(--shadow-card); }
+        .tab-btn { flex:1; padding:10px 8px; border:none; background:transparent; cursor:pointer; font-size:14px; font-weight:600; color:var(--color-text-muted); border-radius:var(--radius-sm); transition:var(--transition-normal); font-family:var(--font-family); }
+        .tab-btn:hover { color:var(--color-text-primary); background:var(--color-bg); }
+        .tab-btn[aria-selected="true"] { background:var(--gradient-success); color:#fff; }
+        .tab-panel { display:none; }
+        .tab-panel.active { display:block; }
+
+        /* Section Card */
+        .section-card { background:var(--color-bg-card); border:1px solid var(--color-border-light); border-radius:var(--radius-lg); padding:24px; margin-bottom:16px; box-shadow:var(--shadow-card); }
+        .section-header { font-size:16px; font-weight:700; margin-bottom:16px; padding-bottom:10px; border-bottom:2px solid var(--color-border-light); display:flex; align-items:center; gap:8px; }
+        .section-header .num { display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:var(--gradient-success); color:#fff; font-size:12px; font-weight:700; }
+
+        /* Sub-section */
+        .sub-header { font-size:14px; font-weight:700; color:var(--color-text-muted); margin:14px 0 10px; padding-left:4px; letter-spacing:.5px; }
+        .sub-header:first-child { margin-top:0; }
+
+        /* News Item */
+        .news-item { padding:10px 0; border-bottom:1px solid var(--color-border-light); }
+        .news-item:last-child { border-bottom:none; }
+        .news-tag { display:inline-block; padding:2px 8px; border-radius:var(--radius-full); font-size:11px; font-weight:600; }
+        .tag-hot { background:#FEF2F2; color:var(--color-danger); }
+        .tag-new { background:#EFFDF5; color:var(--color-success); }
+        .tag-opinion { background:#F5F3FF; color:var(--color-purple); }
+        .tag-data { background:#FFF8E1; color:var(--color-warning); }
+        .news-title { font-size:15px; font-weight:600; margin:4px 0 3px; }
+        .news-title a { color:var(--color-text-primary); text-decoration:none; }
+        .news-title a:hover { color:var(--color-success); }
+        .news-source { font-size:12px; color:var(--color-text-muted); }
+        .news-summary { font-size:14px; color:var(--color-text-secondary); margin-top:4px; line-height:1.6; }
+
+        /* Expert Quote */
+        .expert-quote { display:flex; gap:14px; align-items:flex-start; padding:14px 0; border-bottom:1px solid var(--color-border-light); }
+        .expert-quote:last-child { border-bottom:none; }
+        .expert-avatar { flex-shrink:0; width:40px; height:40px; border-radius:50%; background:var(--gradient-success); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; }
+        .expert-avatar.purple { background:linear-gradient(135deg,#7C3AED,#9F67FF); }
+        .expert-avatar.blue { background:linear-gradient(135deg,#0969DA,#54AEFF); }
+        .expert-avatar.orange { background:linear-gradient(135deg,#BF8700,#E3A008); }
+        .expert-avatar.red { background:linear-gradient(135deg,#CF222E,#FF7B72); }
+        .expert-content { flex:1; }
+        .expert-name { font-size:14px; font-weight:600; margin-bottom:4px; }
+        .expert-name span { font-weight:400; color:var(--color-text-muted); font-size:12px; }
+        .expert-text { font-size:14px; color:var(--color-text-secondary); line-height:1.7; font-style:italic; padding:8px 12px; background:var(--color-bg-table-header); border-radius:var(--radius-md); border-left:3px solid var(--color-purple); margin:6px 0; }
+        .expert-source { font-size:12px; color:var(--color-text-muted); margin-top:4px; }
+        .expert-source a { color:var(--color-info); text-decoration:none; }
+
+        /* Insight Box */
+        .insight-text { font-size:14px; color:var(--color-text-secondary); line-height:1.75; }
+        .insight-text strong { color:var(--color-text-primary); }
+
+        /* Footer */
+        .footer { text-align:center; padding:24px; font-size:12px; color:var(--color-text-muted); border-top:1px solid var(--color-border-light); margin-top:24px; }
+
+        @media (max-width:768px) {
+            .overview-grid { grid-template-columns:1fr; }
+            .tab-btn { font-size:12px; padding:8px 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-badge">📡 DAILY AI INTELLIGENCE REPORT</div>
+            <div class="header-title">AI 日报</div>
+            <div class="header-date">2026年3月3日 星期二 | L1/L2 定向追踪 · 高热度筛选</div>
+        </div>
+
+        <!-- 全文概览 -->
+        <div class="overview">
+            <div class="overview-title">📋 全文概览</div>
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <div class="overview-item-header">
+                        <span class="overview-item-icon">🧠</span>
+                        <span class="overview-item-label">大模型</span>
+                    </div>
+                    <div class="overview-item-text">
+                        Google Gemini 3.1 发布，华为在 MWC 推出新一代 Atlas 算力底座，中国 AI API 调用量首超美国。<strong>竞争焦点从"谁的模型更大"转向"谁的落地更快"</strong>。Karpathy 用 200 行 Python 实现完整 GPT，证明 LLM 的算法本质已可被极致压缩，真正壁垒在数据和工程化。Grady Booch 指出这是软件工程的"第三个黄金时代"。
+                    </div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-item-header">
+                        <span class="overview-item-icon">⌨️</span>
+                        <span class="overview-item-label">AI Coding</span>
+                    </div>
+                    <div class="overview-item-text">
+                        今日 Latent Space 发文宣称"代码审查将死于 2026"——高 AI 采用团队 PR 合并 +98%，但审查时间反增 91%。Cursor 密集发布 Bugbot Autofix、52 小时 Agent、Cloud Agent；Stripe 全员预装。<strong>工程师角色正从"写代码"向"定义 Spec 和约束"迁移</strong>。Simon Willison 正在编写 Agentic Engineering Patterns 指南。
+                    </div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-item-header">
+                        <span class="overview-item-icon">📱</span>
+                        <span class="overview-item-label">AI 应用</span>
+                    </div>
+                    <div class="overview-item-text">
+                        Claude 超越 ChatGPT 登顶美国 App Store。Simon Willison 发现 Claude "Import Memory" 功能本质是一段 prompt——最好的产品设计可以极其简单。<strong>市场正在分化：头部产品增长迅猛，但 36 氪判断大量缺壁垒的 AI 应用将被清算</strong>。Pragmatic Engineer 报道了创业公司用 Claude Agents 淘汰传统 SaaS 的案例。
+                    </div>
+                </div>
+                <div class="overview-item">
+                    <div class="overview-item-header">
+                        <span class="overview-item-icon">🔄</span>
+                        <span class="overview-item-label">研发AI转型</span>
+                    </div>
+                    <div class="overview-item-text">
+                        Latent Space 提出 Spec-driven Development 范式：人类审 Spec，机器写代码+验证。Cursor 的 Agent Best Practices 系统化了转型路径。<strong>WEF 灯塔工厂数据显示 AI 驱动的研发周期缩短 45%</strong>。Barry Zhang 的 "Build Skills, Not Agents" 和 Grady Booch 的"把注意力从摩擦转向想象力"指明了方向。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tab-nav" role="tablist">
+            <button class="tab-btn" role="tab" aria-selected="true" data-tab="tab-foundation">🧠 大模型</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-coding">⌨️ AI Coding</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-application">📱 AI 应用</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-transformation">🔄 研发AI转型</button>
+        </div>
+
+        <!-- ==================== Tab 1: 大模型 ==================== -->
+        <div class="tab-panel active" id="tab-foundation">
+
+            <!-- Part 1: 最近动态 -->
+            <div class="section-card">
+                <div class="section-header"><span class="num">1</span> 最近动态</div>
+
+                <div class="sub-header">🌏 海外</div>
+                <div class="news-item">
+                    <span class="news-tag tag-new">新发布</span>
+                    <div class="news-title"><a href="https://ai.google.dev/gemini-api/docs/changelog" target="_blank">Google Gemini 3.1 发布，Gemini 3 Pro preview 3月9日停服</a></div>
+                    <div class="news-source">Google AI · 2026-02-19</div>
+                    <div class="news-summary">新一代多模态模型已上线，优化了速度和大规模使用场景。Gemini 3 Pro 预览版将于 3 月 9 日停止服务。</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-tag tag-new">新发布</span>
+                    <div class="news-title"><a href="https://www.nvidia.com/gtc/" target="_blank">NVIDIA GTC 2026 大会 3月16-19日即将召开</a></div>
+                    <div class="news-source">NVIDIA</div>
+                    <div class="news-summary">全球最大 AI 技术大会在圣何塞举行，聚焦 Physical AI、Agentic AI、推理优化和 AI 工厂。</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-tag tag-opinion">作品</span>
+                    <div class="news-title"><a href="https://karpathy.github.io/2026/02/12/microgpt/" target="_blank">Andrej Karpathy 发布 microgpt：200 行纯 Python 实现完整 GPT</a></div>
+                    <div class="news-source">karpathy.github.io · 2026-02-12</div>
+                    <div class="news-summary">零依赖实现完整 GPT 训练和推理——包含 tokenizer、autograd 引擎、GPT-2 架构、Adam 优化器。Karpathy 称之为"十年执念的结晶，无法再简化"。</div>
+                </div>
+
+                <div class="sub-header">🇨🇳 国内</div>
+                <div class="news-item">
+                    <span class="news-tag tag-hot">热点</span>
+                    <div class="news-title"><a href="https://www.huawei.com/cn/news/2026/3/mwc-superpod-ai" target="_blank">华为 MWC 2026 发布新一代 Atlas 算力底座</a></div>
+                    <div class="news-source">华为 · 2026-03-02</div>
+                    <div class="news-summary">在巴塞罗那 MWC 期间发布，大模型训练效率、可靠性与推理性能均大幅提升，为国产算力提供全栈替代方案。</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-tag tag-data">数据</span>
+                    <div class="news-title">中国 AI 模型应用量首超美国</div>
+                    <div class="news-source">中国银河证券 · 2026-03-02</div>
+                    <div class="news-summary">数字经济双周报显示中国 AI API 调用量首次超越美国，"应用落地"正在重新定义竞争格局。</div>
+                </div>
+            </div>
+
+            <!-- Part 2: 热门观点 -->
+            <div class="section-card">
+                <div class="section-header"><span class="num">2</span> 热门观点</div>
+                <div class="expert-quote">
+                    <div class="expert-avatar blue">AK</div>
+                    <div class="expert-content">
+                        <div class="expert-name">Andrej Karpathy <span>前 OpenAI 联合创始人</span></div>
+                        <div class="expert-text">"I cannot simplify this any further. This script is the culmination of a decade-long obsession to simplify LLMs to their bare essentials, and I think it is beautiful." — ChatGPT 和 microgpt 的区别不在算法，只在规模。</div>
+                        <div class="expert-source"><a href="https://karpathy.github.io/2026/02/12/microgpt/" target="_blank">microgpt</a> · 2026-02-12</div>
+                    </div>
+                </div>
+                <div class="expert-quote">
+                    <div class="expert-avatar purple">GB</div>
+                    <div class="expert-content">
+                        <div class="expert-name">Grady Booch <span>IBM 首席科学家 · UML 联合创始人</span></div>
+                        <div class="expert-text">"Fear not, developers. Your tools are changing, but your problems are not." — 我们正处于软件工程的第三个黄金时代。AI 工具代表了抽象层级的又一次提升，不是工程的终结。</div>
+                        <div class="expert-source"><a href="https://newsletter.pragmaticengineer.com/p/the-third-golden-age-of-software" target="_blank">Pragmatic Engineer Podcast</a> · 2026-02-04</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 3: 趋势洞察 -->
+            <div class="section-card">
+                <div class="section-header"><span class="num">3</span> 趋势洞察</div>
+                <div class="insight-text">大模型竞争进入新阶段：Google Gemini 快速迭代（3.1 已发、3 Pro 即将停服）、华为 Atlas 提供国产全栈替代、中国 API 调用量超美国。<strong>竞争焦点从"谁的模型更大"转向"谁的落地更快"</strong>。Karpathy 的 microgpt 提醒我们：LLM 的算法本质已可被极致压缩到 200 行，真正的壁垒在数据、算力和工程化——不在算法本身。</div>
+            </div>
+        </div>
+
+        <!-- ==================== Tab 2: AI Coding ==================== -->
+        <div class="tab-panel" id="tab-coding">
+
+            <!-- Part 1: 最近动态 -->
+            <div class="section-card">
+                <div class="section-header"><span class="num">1</span> 最近动态</div>
+
+                <div class="sub-header">🌏 海外</div>
+                <div class="news-item">
+                    <span class="news-tag tag-hot">🔴 今日</span>
+                    <div class="news-title"><a href="https://www.latent.space/p/reviews-dead" target="_blank">Latent Space: "How to Kill the Code Review" — 代码审查即将消亡</a></div>
+                    <div class="news-source">Ankit Jain / Latent Space · 2026-03-03（今日）</div>
+                    <div class="news-summary"><strong>今日最热文章。</strong>数据：高 AI 采用团队任务 +21%、PR 合并 +98%、但审查时间 +91%。论点："人类写的代码死于 2025，代码审查将死于 2026。" 提出 Spec-driven Development。</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-tag tag-new">新发布</span>
+                    <div class="news-title"><a href="https://cursor.com/blog/topic/product" target="_blank">Cursor 发布 Bugbot Autofix：自动发现并修复 PR 问题</a></div>
+                    <div class="news-source">Cursor · 2026-02-26</div>
+                    <div class="news-summary">通过生成 Cloud Agent 来测试变更并自动修复问题。</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-tag tag-new">新发布</span>
+                    <div class="news-title"><a href="https://cursor.com/blog/long-running-agents" target="_blank">Cursor Long-running Agents：支持 52 小时长时间运行</a></div>
+                    <div class="news-source">Cursor · 2026-02-12</div>
+                    <div class="news-summary">产出 151K 行代码的 PR。案例：36 小时构建聊天平台、30 小时实现移动端应用、25 小时重构认证系统。</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-tag tag-hot">里程碑</span>
+                    <div class="news-title"><a href="https://cursor.com/blog" target="_blank">Stripe 在每位开发者电脑上预装 Cursor</a></div>
+                    <div class="news-source">Cursor · 2026-02-17</div>
+                    <div class="news-summary">金融科技巨头 Stripe 全员部署，帮助工程师第一天就能高效使用 AI Agent。</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-tag tag-new">新发布</span>
+                    <div class="news-title"><a href="https://cursor.com/changelog/02-24-26" target="_blank">Cursor Cloud Agents + Computer Use</a></div>
+                    <div class="news-source">Cursor · 2026-02-24</div>
+                    <div class="news-summary">Agent 可在独立 VM 中使用它创建的软件来测试和演示，生成 merge-ready PR 和验证视频。</div>
+                </div>
+
+                <div class="sub-header">🇨🇳 国内</div>
+                <div class="news-item">
+                    <span class="news-tag tag-new">新发布</span>
+                    <div class="news-title"><a href="https://blogs.nvidia.cn/blog/dgx-spark-and-station-open-source-frontier-models/" target="_blank">NVIDIA DGX Spark 桌面级 AI 超级计算机</a></div>
+                    <div class="news-source">NVIDIA · CES 2026</div>
+                    <div class="news-summary">开发者可在本地桌面系统上运行最新开源和前沿 AI 模型，AI 编码助手重塑开发者生产力。</div>
+                </div>
+            </div>
+
+            <!-- Part 2: 热门观点 -->
+            <div class="section-card">
+                <div class="section-header"><span class="num">2</span> 热门观点</div>
+                <div class="expert-quote">
+                    <div class="expert-avatar red">AJ</div>
+                    <div class="expert-content">
+                        <div class="expert-name">Ankit Jain <span>Aviator CEO · Latent Space 特约</span></div>
+                        <div class="expert-text">"Human-written code died in 2025. Code reviews will die in 2026." — 未来是 ship fast, observe everything, revert faster。我们不可能在阅读速度上赢过机器，需要在上游思考上胜过它们。</div>
+                        <div class="expert-source"><a href="https://www.latent.space/p/reviews-dead" target="_blank">Latent Space</a> · 2026-03-03</div>
+                    </div>
+                </div>
+                <div class="expert-quote">
+                    <div class="expert-avatar">CT</div>
+                    <div class="expert-content">
+                        <div class="expert-name">Cursor Team <span>Anysphere</span></div>
+                        <div class="expert-text">"我原计划这个项目需要整整一个季度。用 Cursor 长时间 Agent，压缩到了几天。可以发起 52 小时任务，回来就看到 151K 行代码的大 PR。"</div>
+                        <div class="expert-source"><a href="https://cursor.com/blog/long-running-agents" target="_blank">Cursor Blog</a> · 2026-02-12</div>
+                    </div>
+                </div>
+                <div class="expert-quote">
+                    <div class="expert-avatar blue">SW</div>
+                    <div class="expert-content">
+                        <div class="expert-name">Simon Willison <span>Django 联合创始人</span></div>
+                        <div class="expert-text">正在撰写 "Agentic Engineering Patterns" 指南。使用 Claude Opus 4.6 作为校对器，不仅修正拼写语法，还能发现事实性错误。Agent 工程正在成为一门新学科。</div>
+                        <div class="expert-source"><a href="https://simonwillison.net/2026/Mar/2/" target="_blank">simonwillison.net</a> · 2026-03-02</div>
+                    </div>
+                </div>
+                <div class="expert-quote">
+                    <div class="expert-avatar orange">AO</div>
+                    <div class="expert-content">
+                        <div class="expert-name">Addy Osmani <span>Google Chrome 工程总监</span></div>
+                        <div class="expert-text">"At Anthropic, ~90% of the code is AI-generated. This isn't 'prompt YOLO' — it's Intent → Code, a disciplined 5-step workflow."</div>
+                        <div class="expert-source"><a href="https://addyosmani.com/blog/ai-coding-workflow/" target="_blank">addyosmani.com</a> · 2026-01-04</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 3: 趋势洞察 -->
+            <div class="section-card">
+                <div class="section-header"><span class="num">3</span> 趋势洞察</div>
+                <div class="insight-text">今日 Latent Space 的文章标志着一个行业转折点：<strong>代码审查从"质量关口"变成了"效率瓶颈"</strong>。多方数据和实践正在汇聚同一方向——Cursor 的 Plan Mode（先规划再执行）、Bugbot Autofix（自动修复 PR）、多模型并行（竞争出最优解）正是 Spec-driven 范式的具体实现。Stripe 全员预装 Cursor 是一个标志性事件。<strong>工程师的核心价值正在从"写代码/审代码"向"定义约束/设计 Spec"迁移。</strong></div>
+            </div>
+        </div>
+
+        <!-- ==================== Tab 3: AI 应用 ==================== -->
+        <div class="tab-panel" id="tab-application">
+
+            <!-- Part 1: 最近动态 -->
+            <div class="section-card">
+                <div class="section-header"><span class="num">1</span> 最近动态</div>
+
+                <div class="sub-header">🌏 海外</div>
+                <div class="news-item">
+                    <span class="news-tag tag-hot">热点</span>
+                    <div class="news-title">Claude 超越 ChatGPT 登顶美国 App Store #1</div>
+                    <div class="news-source">Mashable</div>
+                    <div class="news-summary">Anthropic 的消费级产品突破，安全性和用户体验成为关键差异因素。</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-tag tag-opinion">发现</span>
+                    <div class="news-title"><a href="https://simonwillison.net/2026/Mar/1/claude-import-memory/" target="_blank">Simon Willison 揭示 Claude "Import Memory" 本质是一段 prompt</a></div>
+                    <div class="news-source">simonwillison.net · 2026-03-01</div>
+                    <div class="news-summary">Anthropic 的"导入记忆"功能本质上是一段精心设计的提示词，诱导 Claude 导出所有存储的用户偏好和个人信息。</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-tag tag-opinion">案例</span>
+                    <div class="news-title"><a href="https://newsletter.pragmaticengineer.com/p/ai-first-makeover-craft" target="_blank">创业公司用 Claude Agents 淘汰传统 SaaS</a></div>
+                    <div class="news-source">Pragmatic Engineer · 2026-01-27</div>
+                    <div class="news-summary">非工程师使用"可视化 Claude Code"开发产品，客服团队使用 Craft Agents 可能即将淘汰 Zendesk。</div>
+                </div>
+
+                <div class="sub-header">🇨🇳 国内</div>
+                <div class="news-item">
+                    <span class="news-tag tag-opinion">观点</span>
+                    <div class="news-title">36氪: 2026 是 AI 清算之年</div>
+                    <div class="news-source">36氪</div>
+                    <div class="news-summary">大量缺乏商业壁垒的 AI 应用将被市场淘汰。能否从"工具"进化为"不可替代的工作流"是关键。</div>
+                </div>
+            </div>
+
+            <!-- Part 2: 热门观点 -->
+            <div class="section-card">
+                <div class="section-header"><span class="num">2</span> 热门观点</div>
+                <div class="expert-quote">
+                    <div class="expert-avatar blue">SW</div>
+                    <div class="expert-content">
+                        <div class="expert-name">Simon Willison <span>Django 联合创始人</span></div>
+                        <div class="expert-text">Anthropic 的 "Import Memory to Claude" 功能本质是一段精心构造的 prompt——让用户以为是技术功能，实际上是提示工程的巧妙应用。最好的产品设计可以极其简单。</div>
+                        <div class="expert-source"><a href="https://simonwillison.net/2026/Mar/1/claude-import-memory/" target="_blank">simonwillison.net</a> · 2026-03-01</div>
+                    </div>
+                </div>
+                <div class="expert-quote">
+                    <div class="expert-avatar purple">GO</div>
+                    <div class="expert-content">
+                        <div class="expert-name">Gergely Orosz <span>Pragmatic Engineer</span></div>
+                        <div class="expert-text">深度报道了一家五年老创业公司 Craft 的 AI 改造：非工程师使用"可视化 Claude Code"开发，客服用 Craft Agents 取代 Zendesk。AI 正在让"写代码"不再是工程师的专利。</div>
+                        <div class="expert-source"><a href="https://newsletter.pragmaticengineer.com/p/ai-first-makeover-craft" target="_blank">Pragmatic Engineer</a> · 2026-01-27</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 3: 趋势洞察 -->
+            <div class="section-card">
+                <div class="section-header"><span class="num">3</span> 趋势洞察</div>
+                <div class="insight-text">AI 应用市场正在经历"<strong>冰与火</strong>"分化：Claude 登顶 App Store 证明用户愿为高质量 AI 产品付费；同时 36 氪判断大量缺壁垒应用将被清算。Simon Willison 对 Claude Import Memory 的拆解揭示了一个有趣的产品哲学：<strong>最好的产品设计往往是最简单的——一段 prompt 就能实现"记忆导入"功能</strong>。Craft 的案例则说明，AI 的终极价值不在于替代工程师，而在于让更多人具备"创造软件"的能力。</div>
+            </div>
+        </div>
+
+        <!-- ==================== Tab 4: 研发AI转型 ==================== -->
+        <div class="tab-panel" id="tab-transformation">
+
+            <!-- Part 1: 最近动态 -->
+            <div class="section-card">
+                <div class="section-header"><span class="num">1</span> 最近动态</div>
+
+                <div class="sub-header">🌏 海外</div>
+                <div class="news-item">
+                    <span class="news-tag tag-hot">🔴 今日</span>
+                    <div class="news-title"><a href="https://www.latent.space/p/reviews-dead" target="_blank">Spec-driven Development：研发工作流范式转变</a></div>
+                    <div class="news-source">Latent Space · 2026-03-03</div>
+                    <div class="news-summary">Specs 成为源头，代码成为产物。人类审 Spec，不审 Diff。BDD 迎来复兴。多 Agent 竞争 + 瑞士奶酪信任模型。</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-tag tag-new">报告</span>
+                    <div class="news-title"><a href="https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html" target="_blank">Deloitte: 2026 企业 AI 报告</a></div>
+                    <div class="news-source">Deloitte</div>
+                    <div class="news-summary">提升生产力和效率是企业 AI 转型的首要目标。</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-tag tag-opinion">实践</span>
+                    <div class="news-title"><a href="https://cursor.com/blog/agent-best-practices" target="_blank">Cursor: Agent 编码最佳实践</a></div>
+                    <div class="news-source">Cursor · 2026-01-09</div>
+                    <div class="news-summary">系统化指引：Plan Mode + Rules + Skills + Hooks + Debug Mode + 并行 Agent。工程师角色从写代码转向"给 Agent 提供上下文"。</div>
+                </div>
+
+                <div class="sub-header">🇨🇳 国内</div>
+                <div class="news-item">
+                    <span class="news-tag tag-data">数据</span>
+                    <div class="news-title"><a href="https://cn.weforum.org/press/2026/01/global-lighthouse-network-recognizes-23-new-sites-launches-ai-platform-for-industrial-transformation-89a7334dcb-cn/" target="_blank">WEF 灯塔工厂：23 个新入选，16 个来自中国</a></div>
+                    <div class="news-source">WEF · 2026-01-15</div>
+                    <div class="news-summary">AI 辅助研发到数据驱动流程管控，研发周期缩短 45%，生产效率提升 421%。</div>
+                </div>
+                <div class="news-item">
+                    <span class="news-tag tag-new">会议</span>
+                    <div class="news-title">QECon: AI 编码时代的研发效能度量体系重构</div>
+                    <div class="news-source">QECon 全球软件质量效能大会</div>
+                    <div class="news-summary">议题包括 DORA 报告启示、DeepSeek 企业级应用实践、从"度量困境"到AI赋能质量。</div>
+                </div>
+            </div>
+
+            <!-- Part 2: 热门观点 -->
+            <div class="section-card">
+                <div class="section-header"><span class="num">2</span> 热门观点</div>
+                <div class="expert-quote">
+                    <div class="expert-avatar red">AJ</div>
+                    <div class="expert-content">
+                        <div class="expert-name">Ankit Jain <span>Aviator CEO</span></div>
+                        <div class="expert-text">"Specs become the source of truth. Code becomes an artifact. You don't review the code — you review the contract the code must fulfill." — 人类审 Spec，机器写代码+验证。</div>
+                        <div class="expert-source"><a href="https://www.latent.space/p/reviews-dead" target="_blank">Latent Space</a> · 2026-03-03</div>
+                    </div>
+                </div>
+                <div class="expert-quote">
+                    <div class="expert-avatar purple">GB</div>
+                    <div class="expert-content">
+                        <div class="expert-name">Grady Booch <span>IBM 首席科学家</span></div>
+                        <div class="expert-text">"AI lets you redirect attention from friction to imagination — to build things that simply were not possible before." — 基础设施和交付管线是自动化的低垂果实。</div>
+                        <div class="expert-source"><a href="https://newsletter.pragmaticengineer.com/p/the-third-golden-age-of-software" target="_blank">Pragmatic Engineer Podcast</a> · 2026-02-04</div>
+                    </div>
+                </div>
+                <div class="expert-quote">
+                    <div class="expert-avatar blue">BZ</div>
+                    <div class="expert-content">
+                        <div class="expert-name">Barry Zhang <span>Anthropic · Head of Applied AI</span></div>
+                        <div class="expert-text">"Don't Build Agents, Build Skills Instead." — Agent 的瓶颈不是智能，而是缺乏专业知识。Skills 是组织知识的可复用封装，让 Agent 在特定领域表现卓越。</div>
+                        <div class="expert-source"><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank">AI Engineer Code Summit</a> · 2025-11</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 3: 趋势洞察 -->
+            <div class="section-card">
+                <div class="section-header"><span class="num">3</span> 趋势洞察</div>
+                <div class="insight-text"><strong>"审查上游化"正在成为行业共识</strong>：Latent Space 的 Spec-driven Development、Cursor 的 Plan Mode、Barry Zhang 的 Skills 范式——核心一致：人类的价值从"写/审代码"转向"定义问题、设计约束"。WEF 灯塔工厂数据（研发周期 -45%）证明 AI 研发转型已不是理论。Stripe 全员预装 Cursor 是标志性事件。<strong>对研发团队而言，现在的关键问题不是"要不要用 AI"，而是"如何系统化地定义好 Spec 和约束"。</strong></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>AI 日报 · 2026年3月3日 · 自动生成 · 仅供内部参考</p>
+            <p style="margin-top:6px">来源: Latent Space, Cursor Blog, simonwillison.net, Pragmatic Engineer, karpathy.github.io, Google AI, 华为, NVIDIA, Deloitte, WEF, 36氪 等</p>
+            <p style="margin-top:4px">追踪: Ankit Jain, Andrej Karpathy, Cursor Team, Simon Willison, Grady Booch, Addy Osmani, Barry Zhang, Gergely Orosz</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.setAttribute('aria-selected','false'));
+                document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+                btn.setAttribute('aria-selected','true');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
